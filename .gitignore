@@ -1,0 +1,40 @@
+# Dependencies
+node_modules/
+
+# Build output (anyone can rebuild with: .\release\build.ps1 exe)
+dist/
+out/
+
+# Packaged executables & electron-builder output: keep only the build helper
+release/*
+!release/build.ps1
+
+# Stray executables / installers anywhere
+*.exe
+*.msi
+*.blockmap
+*.7z
+*.zip
+builder-debug.yml
+builder-effective-config.yaml
+
+# Test & smoke-run artifacts
+smoke-out/
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS junk
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local env & secrets
+.env
+.env.*
+.claude/settings.local.json
