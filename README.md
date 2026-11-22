@@ -1,192 +1,85 @@
-<div align="center">
-
 # Blockhold Launcher
 
-### Your game library, but it's a world you can walk around in.
-
-Spawn in first person, follow the paths to six themed regions, and find every game on your PC waiting in its own chest.<br>
-Open the chest, hit **Play**, and the real game launches.
+A game launcher for Windows where your library is a voxel world. You walk around in first person and every game you have installed sits in a chest somewhere. Open the chest, hit Play, and the game starts.
 
 [![Download](https://img.shields.io/github/v/release/ak6580123/Blockhold-Launcher?label=download&style=for-the-badge&color=3f9b35&cacheSeconds=3600)](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)
-![Platform](https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows)
-![Electron](https://img.shields.io/badge/Electron-45-47848F?style=for-the-badge&logo=electron&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-r187-black?style=for-the-badge&logo=threedotjs)
-![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
 
-<img src="docs/screenshots/title.png" alt="Blockhold title screen over the spawn plaza" width="100%">
+![Title screen](docs/screenshots/title.png)
 
-</div>
+## What it does
 
----
+- Finds your installed games from Steam, Epic, GOG Galaxy, Xbox / Microsoft Store, and folders like `C:\Games`. You can also add any exe or shortcut yourself.
+- Puts each game in a chest in one of six regions around spawn (Survival, Adventure, RPG, FPS, Indie, Sandbox). It guesses the region from the title, and you can change it.
+- Launches the game, notices when it's running (even if it went through Steam or Epic), and tracks playtime.
+- You can break and place blocks, move chests around, fast travel with waystones, and use your own skin.
+- There's an elytra and fireworks if you want to fly around.
 
-## Features
+All the textures, models and sounds are generated in code, so there are no assets from other games in here.
 
-| | |
-|---|---|
-| **A real world** | Endless procedural terrain with forests, hills, water, villages and day/night. Six regions surround spawn: **Survival, Adventure, RPG, FPS, Indie, Sandbox**. |
-| **Games live in chests** | Every game gets a physical chest in its region, with cover art floating above it. Open it to play, edit, or move it anywhere you like. |
-| **Finds your games** | Auto-discovers **Steam, Epic, GOG Galaxy, Xbox / Microsoft Store** and plain folders like `C:\Games`. Anything else can be added by hand. |
-| **Actually launches them** | Direct exe, store URIs or packaged apps. It detects when a game is running and tracks playtime. |
-| **Elytra & fireworks** | Strap on wings, jump off a cliff and glide. Fire a rocket mid-flight for a burst of speed, or set off a firework show from the ground. |
-| **Build stuff** | Break and place blocks with a pickaxe, axe, shovel and sword. There's a full inventory, and your edits are saved. |
-| **Fast travel** | Waystones link spawn and every plaza. The **Game Seeker** wand opens chests from 48 blocks away and teleports you to any game. |
-| **Your own skin** | Load a skin file or fetch one by username, then press **F5** for third person. |
-| **All procedural** | Every texture, model, icon and sound is generated at runtime. No third-party game assets ship with it. |
+![Night at spawn](docs/screenshots/night.png)
 
-<table>
-<tr>
-<td><img src="docs/screenshots/night.png" alt="Torch-lit spawn plaza at night"></td>
-<td><img src="docs/screenshots/third-person.png" alt="Third-person view of the player at spawn"></td>
-</tr>
-<tr>
-<td align="center"><sub>Torchlit spawn under the stars</sub></td>
-<td align="center"><sub>Third-person view (F5) with a custom skin</sub></td>
-</tr>
-</table>
+## Download
 
-## Install
+Get it from the [releases page](https://github.com/ak6580123/Blockhold-Launcher/releases/latest). There's an installer and a portable exe. They do the same thing.
 
-Grab the latest build from **[Releases](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)**:
-
-- **`Blockhold Launcher Setup x.y.z.exe`**: the installer. It adds Start-menu and desktop shortcuts, lets you pick a folder, and includes an uninstaller.
-- **`BlockholdLauncher-x.y.z-portable.exe`**: a single file that runs without installing.
-
-> [!NOTE]
-> The builds aren't code-signed, so Windows SmartScreen may warn you the first time. Click **More info → Run anyway**.
-
-On first launch it scans for installed games and gives each one a chest. Follow the paths out of spawn to find them.
+The builds aren't signed, so Windows SmartScreen will probably complain the first time. Click "More info" and then "Run anyway".
 
 ## Controls
 
 | Key | Action |
 |---|---|
-| **WASD** / mouse | Move / look |
-| **Space** | Jump · double-tap to fly · **tap while falling with an Elytra to glide** |
-| **Shift** / **Ctrl** | Sprint / crouch (crouching won't walk off ledges) |
-| **Left click** (hold) | Break blocks (the right tool is much faster) |
-| **Right click** | Place · open chest · use waystone · Game Seeker · **firework boost** · wear Elytra |
-| **E** | Open the chest you're looking at, otherwise the inventory |
-| **F** | Quick-play the chest you're looking at / waystone fast travel |
-| **F5** | First person → third person behind → third person front |
-| **1–9**, wheel | Hotbar |
-| **Esc** | Pause menu: Game Library, Settings, Return to Spawn, Quit |
-| **F3** | Debug overlay |
+| WASD, mouse | Move, look |
+| Space | Jump. Double-tap to fly |
+| Shift / Ctrl | Sprint / crouch |
+| Left click | Break blocks |
+| Right click | Place blocks, open chests, use items |
+| E | Open the chest you're looking at, or your inventory |
+| F | Quick-play the chest you're looking at |
+| F5 | Switch camera view |
+| 1-9, scroll | Hotbar |
+| Esc | Menu (library, settings, quit) |
+| F3 | Debug info |
 
-Movement and E / F / F3 can be rebound in **Settings**.
+Most of these can be rebound in Settings.
 
-### Flying with the Elytra
+**Flying:** put the elytra on (right-click it, or drag it into the Back slot in your inventory), jump off something high, and press Space while you're falling. Look down to speed up and up to climb. Right-click a firework while gliding for a boost. New worlds give you both items. In an older world, take them from the item palette in the inventory.
 
-1. Open the inventory (**E**). Take an **Elytra** and some **Firework Rockets** from the item palette (new worlds start with both).
-2. Wear the Elytra: right-click with it in your hand, or drop it in the **Back** slot.
-3. Jump off something high and press **Space** while falling to spread your wings.
-4. **Look down** to dive and gain speed, **look up** to trade that speed for height.
-5. **Right-click a firework** mid-flight to rocket forward. Tap **Space** again to fold your wings.
+## Building from source
 
-## Build from source
-
-You need **[Node.js](https://nodejs.org) 22+** on Windows.
+You need Windows and Node.js 22 or newer.
 
 ```powershell
 git clone https://github.com/ak6580123/Blockhold-Launcher.git
 cd Blockhold-Launcher
 npm install
+.\release\build.ps1
 ```
 
-Then use the build helper. Run it with no arguments for a menu:
+`build.ps1` with no arguments shows a menu. You can also run it with a command:
 
-```powershell
-.\release\build.ps1            # interactive menu
-.\release\build.ps1 run        # build + launch the app
-.\release\build.ps1 check      # typecheck + unit tests
-.\release\build.ps1 smoke      # drives the real app end-to-end, screenshots to smoke-out/
-.\release\build.ps1 exe        # installer + portable .exe in release/
-.\release\build.ps1 release    # checks, then both .exes
-```
+- `run`: build and start it
+- `check`: typecheck and tests
+- `exe`: build the installer and portable exe into `release/`
+- `clean`: delete build output
 
-> [!TIP]
-> If PowerShell blocks scripts, run `powershell -ExecutionPolicy Bypass -File .\release\build.ps1`.
+If PowerShell won't run the script, use `powershell -ExecutionPolicy Bypass -File .\release\build.ps1`. The plain npm scripts (`npm start`, `npm test`, `npm run dist`) work too.
 
-<details>
-<summary>Prefer plain npm scripts?</summary>
+Your library, settings and world are saved in `%APPDATA%\blockhold-launcher\`.
 
-```bash
-npm start            # build + launch
-npm test             # unit tests
-npm run typecheck
-npm run smoke        # end-to-end smoke test
-npm run dist         # installer + portable .exe
-npm run dist:dir     # unpacked app in release/win-unpacked
-```
-</details>
-
-Your library, settings and world live in `%APPDATA%/blockhold-launcher/` (`library.json`, `settings.json`, `world.json`). The installed, portable and dev builds all share them. Writes are atomic, and a corrupt file is backed up instead of being overwritten.
-
-## How games & chests work
-
-- **Discovery** (`src/main/discovery/`)
-  - **Steam**: registry → `libraryfolders.vdf` → `appmanifest_*.acf`, with cover art from the local library cache.
-  - **Epic**: `ProgramData/Epic/.../Manifests/*.item`.
-  - **GOG Galaxy**: registry.
-  - **Xbox / Microsoft Store**: `X:\XboxGames\*\Content\MicrosoftGame.config` plus `Get-AppxPackage` to resolve the AUMID.
-  - **Folders**: `C:\Games`, `D:\Games`, … plus any folders you add in Settings. Each sub-folder counts as one game, and the most likely executable is picked heuristically.
-- On first run, everything found is imported. Later startups only *tell* you about new games, which you can import from **Game Library → Scan for games**.
-- **Manual import**: Game Library → *Add a game manually* accepts any `.exe / .lnk / .url / .bat`.
-- **Regions** are guessed from the title and can be changed in the chest's **Edit** screen. Edit also covers title, description, chest style, executable, arguments, working directory, store URI, multiple named launch configurations and cover art.
-- **Move chest**: pick it up and right-click to place it anywhere. **Remove** deletes the chest only, never the game.
-- **Launching** (`src/main/launcher.ts`) uses a direct `spawn`, a whitelisted store URI (`steam://`, `com.epicgames.launcher://`, …), a shell open for shortcuts, or `shell:AppsFolder\<AUMID>`. **Running detection** combines child-process liveness with a process-list poll, so it also catches games started through Steam or Epic.
-
-## Architecture
+## Project layout
 
 ```
-src/shared/        types + IPC contract + region heuristics (used by both sides)
-src/main/          Electron main process: the only code touching disk, registry or processes
-  main.ts          window, app:// protocol, lifecycle, save-on-close
-  ipc.ts           every handler checks the sender origin and validates its payload
-  validate.ts      path / URI-scheme / settings / save validation
-  library.ts       game metadata         launcher.ts  launching + running/playtime
-  covers.ts        cover art / exe icons → data URLs (lazy, cached)
-  discovery/       steam, epic, gog, xbox, folders
-  preload.ts       contextBridge: exposes window.launcher (no raw ipcRenderer, no Node)
-src/renderer/      Three.js game (sandboxed renderer, strict CSP)
-  engine/          blocks, procedural textures, noise, terrain, structures, chunks,
-                   mesher (face culling, AO, baked torch light), streaming, sky, particles, fireworks
-  player/          input, AABB physics, raycast, controller + elytra flight, hand, third-person model
-  interaction/     targeting, timed breaking with crack overlay, placing
-  inventory/       items + pixel-art icons, inventory + equipment
-  chests/          chest models/animation, labels, covers, layout
-  audio/           WebAudio-synthesised SFX + ambience
-  systems/         settings manager, save system
-  ui/              HUD, inventory, chest, library, settings, menus
-  game.ts          orchestrator + UI state machine
-release/build.ps1  build helper
+src/main/        Electron main process: game discovery, launching, saving files
+src/renderer/    the game itself (Three.js)
+src/shared/      types shared by both
+tests/           unit tests
+scripts/         smoke test that drives the real app
 ```
 
-<details>
-<summary>Security</summary>
+The renderer is sandboxed and can't touch the disk or start processes. It asks the main process to launch a game by its id, and the main process checks everything before doing it.
 
-- The renderer runs with `contextIsolation`, `sandbox` and no `nodeIntegration`, under a CSP of `default-src 'self'`.
-- Navigation and `window.open` are blocked.
-- The renderer can only *ask* main to launch a game **by id**. Main resolves the id against its own library.
-- Executable paths must exist and have an allowed extension. URIs must use a whitelisted store scheme.
-- Processes are spawned without a shell (except `.bat` / `.cmd` via `cmd /c`).
-</details>
+## Known issues
 
-<details>
-<summary>Performance</summary>
-
-- 16×16×128 chunks, each meshed into one merged geometry per material, with hidden faces culled and frustum culling per chunk.
-- One 256×256 texture atlas.
-- Generation and meshing run under a per-frame time budget, and edited chunks near you are remeshed first.
-- Render distance is configurable (2–12 chunks), and far chunks are unloaded.
-- Block particles and firework sparks are each a single instanced mesh. Covers load lazily as you approach.
-</details>
-
-## Known limitations
-
-- Running detection matches by exe name, so an unrelated process with the same exe name can give a false positive. That's rare for games.
-- Store games launched through their client are tracked once their exe appears, if its name could be determined. Otherwise the "running" state clears after about 45 s.
-- The builds aren't code-signed (see the note under [Install](#install)). Signing needs a certificate configured under `build.win` in `package.json`.
-
-<div align="center">
-<sub>Built with Electron, Three.js and TypeScript. Every block, sound and pixel is generated at runtime.</sub>
-</div>
+- Running detection goes by exe name, so a different program with the same exe name can make a game look like it's running.
+- If a game is launched through a store and its exe name can't be worked out, it only shows as running for about 45 seconds.
+- The builds aren't code-signed (hence the SmartScreen warning).
