@@ -2,6 +2,8 @@
 
 A game launcher for Windows where your library is a voxel world. You walk around in first person and every game you have installed sits in a chest somewhere. Open the chest, hit Play, and the game starts.
 
+Is this faster than clicking an icon? No. Is it better? Also probably no. But it's more fun.
+
 [![Download](https://img.shields.io/github/v/release/ak6580123/Blockhold-Launcher?label=download&style=for-the-badge&color=3f9b35&cacheSeconds=3600)](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)
 
 ![Title screen](docs/screenshots/title.png)
@@ -12,9 +14,9 @@ A game launcher for Windows where your library is a voxel world. You walk around
 - Puts each game in a chest in one of six regions around spawn (Survival, Adventure, RPG, FPS, Indie, Sandbox). It guesses the region from the title, and you can change it.
 - Launches the game, notices when it's running (even if it went through Steam or Epic), and tracks playtime.
 - You can break and place blocks, move chests around, fast travel with waystones, and use your own skin.
-- There's an elytra and fireworks if you want to fly around.
+- There's an elytra and fireworks if you want to fly around. This has nothing to do with launching games. It's there because it's fun.
 
-All the textures, models and sounds are generated in code, so there are no assets from other games in here.
+All the textures, models and sounds are generated in code, so there are no assets from other games in here. The bird noises are just math.
 
 ![Night at spawn](docs/screenshots/night.png)
 
@@ -22,7 +24,7 @@ All the textures, models and sounds are generated in code, so there are no asset
 
 Get it from the [releases page](https://github.com/ak6580123/Blockhold-Launcher/releases/latest). There's an installer and a portable exe. They do the same thing.
 
-The builds aren't signed, so Windows SmartScreen will probably complain the first time. Click "More info" and then "Run anyway".
+The builds aren't signed, so Windows SmartScreen will probably complain the first time. Code signing certificates cost money, and that money went to games instead. Click "More info" and then "Run anyway".
 
 ## Controls
 
@@ -42,7 +44,7 @@ The builds aren't signed, so Windows SmartScreen will probably complain the firs
 
 Most of these can be rebound in Settings.
 
-**Flying:** put the elytra on (right-click it, or drag it into the Back slot in your inventory), jump off something high, and press Space while you're falling. Look down to speed up and up to climb. Right-click a firework while gliding for a boost. New worlds give you both items. In an older world, take them from the item palette in the inventory.
+**Flying:** put the elytra on (right-click it, or drag it into the Back slot in your inventory), jump off something high, and press Space while you're falling. Look down to speed up and up to climb. There's no fall damage, so crashing into a mountain only hurts your pride. Right-click a firework while gliding for a boost. New worlds give you both items. In an older world, take them from the item palette in the inventory.
 
 ## Building from source
 
@@ -83,3 +85,4 @@ The renderer is sandboxed and can't touch the disk or start processes. It asks t
 - Running detection goes by exe name, so a different program with the same exe name can make a game look like it's running.
 - If a game is launched through a store and its exe name can't be worked out, it only shows as running for about 45 seconds.
 - The builds aren't code-signed (hence the SmartScreen warning).
+- You will open the launcher to play a game and end up building a house instead. This is not a bug.
