@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⛏️ Blockhold Launcher
+# Blockhold Launcher
 
 ### Your game library, but it's a world you can walk around in.
 
@@ -19,19 +19,19 @@ Open the chest, hit **Play**, and the real game launches.
 
 ---
 
-## ✨ Features
+## Features
 
 | | |
 |---|---|
-| 🗺️ **A real world** | Endless procedural terrain with forests, hills, water, villages and day/night. Six regions surround spawn: **Survival, Adventure, RPG, FPS, Indie, Sandbox**. |
-| 📦 **Games live in chests** | Every game gets a physical chest in its region, with cover art floating above it. Open it to play, edit, or move it anywhere you like. |
-| 🔍 **Finds your games** | Auto-discovers **Steam, Epic, GOG Galaxy, Xbox / Microsoft Store** and plain folders like `C:\Games`. Anything else can be added by hand. |
-| ▶️ **Actually launches them** | Direct exe, store URIs or packaged apps. It detects when a game is running and tracks playtime. |
-| 🪽 **Elytra & fireworks** | Strap on wings, jump off a cliff and glide. Fire a rocket mid-flight for a burst of speed, or set off a firework show from the ground. |
-| ⛏️ **Build stuff** | Break and place blocks with a pickaxe, axe, shovel and sword. There's a full inventory, and your edits are saved. |
-| 🧭 **Fast travel** | Waystones link spawn and every plaza. The **Game Seeker** wand opens chests from 48 blocks away and teleports you to any game. |
-| 🧍 **Your own skin** | Load a skin file or fetch one by username, then press **F5** for third person. |
-| 🎵 **All procedural** | Every texture, model, icon and sound is generated at runtime. No third-party game assets ship with it. |
+| **A real world** | Endless procedural terrain with forests, hills, water, villages and day/night. Six regions surround spawn: **Survival, Adventure, RPG, FPS, Indie, Sandbox**. |
+| **Games live in chests** | Every game gets a physical chest in its region, with cover art floating above it. Open it to play, edit, or move it anywhere you like. |
+| **Finds your games** | Auto-discovers **Steam, Epic, GOG Galaxy, Xbox / Microsoft Store** and plain folders like `C:\Games`. Anything else can be added by hand. |
+| **Actually launches them** | Direct exe, store URIs or packaged apps. It detects when a game is running and tracks playtime. |
+| **Elytra & fireworks** | Strap on wings, jump off a cliff and glide. Fire a rocket mid-flight for a burst of speed, or set off a firework show from the ground. |
+| **Build stuff** | Break and place blocks with a pickaxe, axe, shovel and sword. There's a full inventory, and your edits are saved. |
+| **Fast travel** | Waystones link spawn and every plaza. The **Game Seeker** wand opens chests from 48 blocks away and teleports you to any game. |
+| **Your own skin** | Load a skin file or fetch one by username, then press **F5** for third person. |
+| **All procedural** | Every texture, model, icon and sound is generated at runtime. No third-party game assets ship with it. |
 
 <table>
 <tr>
@@ -44,7 +44,7 @@ Open the chest, hit **Play**, and the real game launches.
 </tr>
 </table>
 
-## 📥 Install
+## Install
 
 Grab the latest build from **[Releases](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)**:
 
@@ -56,7 +56,7 @@ Grab the latest build from **[Releases](https://github.com/ak6580123/Blockhold-L
 
 On first launch it scans for installed games and gives each one a chest. Follow the paths out of spawn to find them.
 
-## 🎮 Controls
+## Controls
 
 | Key | Action |
 |---|---|
@@ -74,7 +74,7 @@ On first launch it scans for installed games and gives each one a chest. Follow 
 
 Movement and E / F / F3 can be rebound in **Settings**.
 
-### 🪽 Flying with the Elytra
+### Flying with the Elytra
 
 1. Open the inventory (**E**). Take an **Elytra** and some **Firework Rockets** from the item palette (new worlds start with both).
 2. Wear the Elytra: right-click with it in your hand, or drop it in the **Back** slot.
@@ -82,7 +82,7 @@ Movement and E / F / F3 can be rebound in **Settings**.
 4. **Look down** to dive and gain speed, **look up** to trade that speed for height.
 5. **Right-click a firework** mid-flight to rocket forward. Tap **Space** again to fold your wings.
 
-## 🛠️ Build from source
+## Build from source
 
 You need **[Node.js](https://nodejs.org) 22+** on Windows.
 
@@ -121,7 +121,7 @@ npm run dist:dir     # unpacked app in release/win-unpacked
 
 Your library, settings and world live in `%APPDATA%/blockhold-launcher/` (`library.json`, `settings.json`, `world.json`). The installed, portable and dev builds all share them. Writes are atomic, and a corrupt file is backed up instead of being overwritten.
 
-## 📦 How games & chests work
+## How games & chests work
 
 - **Discovery** (`src/main/discovery/`)
   - **Steam**: registry → `libraryfolders.vdf` → `appmanifest_*.acf`, with cover art from the local library cache.
@@ -135,7 +135,7 @@ Your library, settings and world live in `%APPDATA%/blockhold-launcher/` (`libra
 - **Move chest**: pick it up and right-click to place it anywhere. **Remove** deletes the chest only, never the game.
 - **Launching** (`src/main/launcher.ts`) uses a direct `spawn`, a whitelisted store URI (`steam://`, `com.epicgames.launcher://`, …), a shell open for shortcuts, or `shell:AppsFolder\<AUMID>`. **Running detection** combines child-process liveness with a process-list poll, so it also catches games started through Steam or Epic.
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 src/shared/        types + IPC contract + region heuristics (used by both sides)
@@ -162,7 +162,7 @@ release/build.ps1  build helper
 ```
 
 <details>
-<summary>🔒 Security</summary>
+<summary>Security</summary>
 
 - The renderer runs with `contextIsolation`, `sandbox` and no `nodeIntegration`, under a CSP of `default-src 'self'`.
 - Navigation and `window.open` are blocked.
@@ -172,7 +172,7 @@ release/build.ps1  build helper
 </details>
 
 <details>
-<summary>⚡ Performance</summary>
+<summary>Performance</summary>
 
 - 16×16×128 chunks, each meshed into one merged geometry per material, with hidden faces culled and frustum culling per chunk.
 - One 256×256 texture atlas.
@@ -181,11 +181,11 @@ release/build.ps1  build helper
 - Block particles and firework sparks are each a single instanced mesh. Covers load lazily as you approach.
 </details>
 
-## ⚠️ Known limitations
+## Known limitations
 
 - Running detection matches by exe name, so an unrelated process with the same exe name can give a false positive. That's rare for games.
 - Store games launched through their client are tracked once their exe appears, if its name could be determined. Otherwise the "running" state clears after about 45 s.
-- The builds aren't code-signed (see the note under [Install](#-install)). Signing needs a certificate configured under `build.win` in `package.json`.
+- The builds aren't code-signed (see the note under [Install](#install)). Signing needs a certificate configured under `build.win` in `package.json`.
 
 <div align="center">
 <sub>Built with Electron, Three.js and TypeScript. Every block, sound and pixel is generated at runtime.</sub>
