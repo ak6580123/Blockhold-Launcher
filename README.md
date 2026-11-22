@@ -7,7 +7,7 @@
 Spawn in first person, follow the paths to six themed regions, and find every game on your PC waiting in its own chest.<br>
 Open the chest, hit **Play**, and the real game launches.
 
-[![Download](https://img.shields.io/github/v/release/ak6580123/Blockhold-Launcher?label=download&style=for-the-badge&color=3f9b35)](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)
+[![Download](https://img.shields.io/github/v/release/ak6580123/Blockhold-Launcher?label=download&style=for-the-badge&color=3f9b35&cacheSeconds=3600)](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)
 ![Platform](https://img.shields.io/badge/platform-Windows-0078D6?style=for-the-badge&logo=windows)
 ![Electron](https://img.shields.io/badge/Electron-45-47848F?style=for-the-badge&logo=electron&logoColor=white)
 ![Three.js](https://img.shields.io/badge/Three.js-r187-black?style=for-the-badge&logo=threedotjs)
