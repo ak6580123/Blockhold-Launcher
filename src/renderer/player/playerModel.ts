@@ -45,12 +45,14 @@ export class PlayerModel {
     const wing = (side: 1 | -1) => {
       const g = new THREE.Group();
       const m = new THREE.Mesh(new THREE.BoxGeometry(10 * PX, 20 * PX, 2 * PX), wingMat);
-      m.position.set(side * 5 * PX, -10 * PX, 0);
+      // the wing hangs inward from its hinge, so folded it covers the back and
+      // spread it swings outward while its top edge stays at shoulder height
+      m.position.set(-side * 5 * PX, -10 * PX, 0);
       if (side < 0) m.scale.x = -1; // mirror the pattern
       m.castShadow = true;
       g.add(m);
-      // hinge at the shoulder blades, just behind the back
-      g.position.set(side * 0.5 * PX, 24 * PX - 12 * PX, -3 * PX);
+      // hinge at the outer corner of each shoulder blade, just behind the back
+      g.position.set(side * 5 * PX, 24 * PX - 12 * PX, -3 * PX);
       return g;
     };
     this.wingR = wing(-1);
@@ -177,8 +179,8 @@ export class PlayerModel {
     if (this.wearingElytra) {
       const speed = Math.hypot(p.vel.x, p.vel.y, p.vel.z);
       const flutter = gb * Math.sin(time * 18) * Math.min(0.06, speed * 0.002);
-      const spread = 0.22 + gb * 1.0 + flutter + (p.crouching ? 0.2 : 0);
-      const back = 0.2 + gb * 0.15 + (p.crouching ? 0.25 : 0);
+      const spread = 0.26 + gb * 1.2 + flutter + (p.crouching ? 0.5 : 0);
+      const back = 0.26 + gb * 0.1 + (p.crouching ? 0.45 : 0);
       this.wingR.rotation.set(back, 0, -spread);
       this.wingL.rotation.set(back, 0, spread);
     }
