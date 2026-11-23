@@ -12,7 +12,7 @@ Is this faster than clicking an icon? No. Is it better? Also probably no. But it
 
 - Finds your installed games from Steam, Epic, GOG Galaxy, Xbox / Microsoft Store, and folders like `C:\Games`. You can also add any exe or shortcut yourself.
 - Puts each game in a chest in one of six regions around spawn (Survival, Adventure, RPG, FPS, Indie, Sandbox). It guesses the region from the title, and you can change it.
-- Launches the game, notices when it's running (even if it went through Steam or Epic), and tracks playtime.
+- Launches the game, notices when it's running (even if it went through Steam or Epic), and tracks playtime, so there's hard evidence of what you did with your weekend.
 - You can break and place blocks, move chests around, fast travel with waystones, and use your own skin.
 - There's an elytra and fireworks if you want to fly around. This has nothing to do with launching games. It's there because it's fun.
 
@@ -48,9 +48,9 @@ Most of these can be rebound in Settings.
 
 **Flying:** put the elytra on (right-click it, or drag it into the Back slot in your inventory), jump off something high, and press Space while you're falling. Look down to speed up and up to climb. There's no fall damage, so crashing into a mountain only hurts your pride. Right-click a firework while gliding for a boost. New worlds give you both items. In an older world, take them from the item palette in the inventory.
 
-**Full 3D flight:** turn on **Full 3D Elytra flight** in Settings > Controls if looking where you want to go feels too easy. Mouse left/right rolls, mouse up/down pitches, and A/D yaws, so you can bank, loop, fly upside down and do barrel rolls. Banking is how you turn. Flying upside down pushes you toward the ground, as physics and your stomach would expect. There's a roll sensitivity slider right below the toggle.
+**Full 3D flight:** if regular flying feels too safe, turn on **Full 3D Elytra flight** in Settings > Controls. Mouse left/right rolls, mouse up/down pitches, and A/D yaws, so you can bank, loop, fly upside down and barrel roll until you regret lunch. Banking is how you turn. Upside down, your wings push you at the ground, because you are holding them wrong. There's a roll sensitivity slider under the toggle for when the horizon starts moving faster than your inner ear.
 
-The setting only changes once you're back on the ground. If you flip it in the air, your current flight stays the way it was until you land.
+The setting only changes once you're back on the ground. Flip it in the air and nothing happens until you land, so you can't swap flight controls halfway through a nosedive.
 
 ## Building from source
 
