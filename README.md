@@ -6,7 +6,7 @@ Is this faster than clicking an icon? No. Is it better? Also probably no. But it
 
 [![Download](https://img.shields.io/github/v/release/ak6580123/Blockhold-Launcher?label=download&style=for-the-badge&color=3f9b35&cacheSeconds=3600)](https://github.com/ak6580123/Blockhold-Launcher/releases/latest)
 
-![Title screen](docs/screenshots/title.png)
+![Walking across the spawn plaza as the sun goes down](docs/screenshots/dusk.gif)
 
 ## What it does
 
@@ -18,7 +18,9 @@ Is this faster than clicking an icon? No. Is it better? Also probably no. But it
 
 All the textures, models and sounds are generated in code, so there are no assets from other games in here. The bird noises are just math.
 
-![Night at spawn](docs/screenshots/night.png)
+There are shooting stars at night. These also have nothing to do with launching games.
+
+![Shooting stars over spawn](docs/screenshots/shooting-stars.gif)
 
 ## Download
 
