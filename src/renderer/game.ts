@@ -288,6 +288,8 @@ export class Game {
     this.input.bindings = { ...s.keyBindings };
     this.player.sensitivity = s.mouseSensitivity;
     this.player.invertY = s.invertY;
+    this.player.flight3d = s.elytra3dFlight;
+    this.player.rollSensitivity = s.elytraRollSensitivity;
     this.sky.cycle = s.dayNightCycle;
     this.sky.dayLengthSec = s.dayLengthMinutes * 60;
     this.skin.setModel(s.skinModel);
@@ -748,7 +750,7 @@ export class Game {
       if (hit) dist = Math.min(dist, Math.max(0.2, hit.dist - margin));
     }
     this.camera.position.set(eye.x + dir.x * dist, eye.y + dir.y * dist, eye.z + dir.z * dist);
-    if (this.cameraView === 2) this.camera.rotation.set(-this.player.pitch, this.player.yaw + Math.PI, 0, 'YXZ');
+    if (this.cameraView === 2) this.camera.rotateY(Math.PI); // face back at the player, keeping any roll
   }
 
   private gameplay(dt: number): void {
@@ -772,7 +774,10 @@ export class Game {
       const g = this.chests.get(chestInReach)!;
       this.hud.setPrompt(g.title + (this.chests.isRunning(g.id) ? ' (running)' : ''), [[b.interact, 'Open chest'], [b.special, 'Quick play']]);
     } else if (waystone) this.hud.setPrompt('Waystone', [[b.special, 'Fast travel'], ['Right-click', 'Use']]);
-    else if (this.player.gliding) this.hud.setPrompt('', held?.id === FIREWORK_ID ? [['Right-click', 'Boost'], [b.jump, 'Fold wings']] : [[b.jump, 'Fold wings']]);
+    else if (this.player.gliding) {
+      const steer: [string, string][] = this.player.flight3dActive ? [['Mouse', 'Roll / pitch'], [b.left, 'Yaw left'], [b.right, 'Yaw right']] : [];
+      this.hud.setPrompt('', [...steer, ...(held?.id === FIREWORK_ID ? [['Right-click', 'Boost'] as [string, string]] : []), [b.jump, 'Fold wings']]);
+    }
     else if (this.inv.wearingElytra && !this.player.onGround && !this.player.flying && !this.player.inWater && this.player.vel.y < -3) this.hud.setPrompt('', [[b.jump, 'Glide']]);
     else this.hud.setPrompt('', []);
 

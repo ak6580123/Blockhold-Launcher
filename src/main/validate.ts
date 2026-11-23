@@ -108,6 +108,8 @@ export function validateSettings(v: unknown): Settings {
   return {
     mouseSensitivity: n('mouseSensitivity', 0.1, 3),
     invertY: b('invertY'),
+    elytra3dFlight: b('elytra3dFlight'),
+    elytraRollSensitivity: n('elytraRollSensitivity', 0.1, 3),
     fov: n('fov', 50, 110),
     graphics: (['low', 'medium', 'high'] as const).includes(o.graphics as never) ? (o.graphics as Settings['graphics']) : d.graphics,
     renderScale: n('renderScale', 0.4, 1),

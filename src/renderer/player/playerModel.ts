@@ -2,6 +2,9 @@ import * as THREE from 'three';
 import type { Player } from './player';
 import { PX, skinBox, type PlayerSkin } from './skin';
 
+/** Maps the model (+Y head, +Z front) onto a flyer (-Z nose, +Y wing-up), face down. */
+const PRONE = new THREE.Quaternion(0, Math.SQRT1_2, -Math.SQRT1_2, 0);
+
 interface Limb {
   pivot: THREE.Group;
   base: THREE.Mesh;
@@ -33,6 +36,9 @@ export class PlayerModel {
   /** set by the game: is an elytra being worn? */
   wearingElytra = false;
   private tmp = new THREE.Vector3();
+  /** 0 = normal glide pose, 1 = follows the 3D flight orientation (eased) */
+  private flightBlend = 0;
+  private flightPose = new THREE.Quaternion();
 
   constructor(scene: THREE.Scene, private skin: PlayerSkin) {
     this.baseMat = new THREE.MeshLambertMaterial({ map: skin.texture });
@@ -128,12 +134,17 @@ export class PlayerModel {
     if (p.gliding) this.bodyYaw = wrap(this.bodyYaw + wrap(p.yaw - this.bodyYaw) * Math.min(1, dt * 12));
     const lean = this.lean * this.glideBlend;
     this.root.rotation.set(lean, this.bodyYaw + Math.PI, 0);
+    // 3D flight: head along the nose, belly toward the wings' underside
+    this.flightBlend += ((p.flight3dActive ? 1 : 0) - this.flightBlend) * Math.min(1, dt * 10);
+    if (p.flight3dActive) this.flightPose.copy(p.flightQuat).multiply(PRONE);
+    if (this.flightBlend > 0.001) this.root.quaternion.slerp(this.flightPose, this.flightBlend);
     // pivot around the body's centre (0.9 up the standing model), which drops to the
     // middle of the short glide hitbox: position = feet + centre - R * centre
     const cy = 0.9 + (0.3 - 0.9) * this.glideBlend;
-    this.tmp.set(0, 0.9, 0).applyEuler(this.root.rotation);
+    this.tmp.set(0, 0.9, 0).applyQuaternion(this.root.quaternion);
     this.root.position.set(p.pos.x - this.tmp.x, p.pos.y + cy - this.tmp.y, p.pos.z - this.tmp.z);
-    this.head.pivot.rotation.set(-p.pitch - lean, wrap(p.yaw - this.bodyYaw), 0);
+    const fb = this.flightBlend;
+    this.head.pivot.rotation.set((-p.pitch - lean) * (1 - fb) - (Math.PI / 2) * fb, wrap(p.yaw - this.bodyYaw) * (1 - fb), 0);
 
     // walk cycle: one leg forward per footstep (shares the phase with the head bob)
     const amt = p.onGround || p.inWater ? Math.min(1, p.speed / 4.3) : 0.25;

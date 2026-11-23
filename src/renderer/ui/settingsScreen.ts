@@ -164,6 +164,8 @@ export class SettingsScreen {
       case 'controls': {
         grid.append(...this.slider('Mouse sensitivity', 'mouseSensitivity', 0.1, 3, 0.05, (v) => `${Math.round(v * 100)}%`));
         grid.append(...this.check('Invert mouse Y', 'invertY'));
+        grid.append(...this.check('Full 3D Elytra flight', 'elytra3dFlight'));
+        grid.append(...this.slider('Elytra roll sensitivity', 'elytraRollSensitivity', 0.1, 3, 0.05, (v) => `${Math.round(v * 100)}%`));
         for (const a of ACTIONS) {
           const b = h('button', { class: `mc-btn small keybind${this.listening === a ? ' listening' : ''}` }, this.listening === a ? 'Press a key…' : keyLabel(s.keyBindings[a]));
           b.addEventListener('click', () => { this.deps.click(); this.listening = a; this.render(); });

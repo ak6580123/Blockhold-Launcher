@@ -107,6 +107,9 @@ export type SkinModel = 'classic' | 'slim';
 export interface Settings {
   mouseSensitivity: number; // 0.1 .. 3
   invertY: boolean;
+  /** mouse rolls and pitches relative to the wings while gliding */
+  elytra3dFlight: boolean;
+  elytraRollSensitivity: number; // 0.1 .. 3
   fov: number; // 50 .. 110
   graphics: GraphicsQuality;
   renderScale: number; // 0.5 .. 1
@@ -130,6 +133,8 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   mouseSensitivity: 1,
   invertY: false,
+  elytra3dFlight: false,
+  elytraRollSensitivity: 1,
   fov: 75,
   graphics: 'medium',
   renderScale: 1,

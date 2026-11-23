@@ -48,6 +48,10 @@ Most of these can be rebound in Settings.
 
 **Flying:** put the elytra on (right-click it, or drag it into the Back slot in your inventory), jump off something high, and press Space while you're falling. Look down to speed up and up to climb. There's no fall damage, so crashing into a mountain only hurts your pride. Right-click a firework while gliding for a boost. New worlds give you both items. In an older world, take them from the item palette in the inventory.
 
+**Full 3D flight:** turn on **Full 3D Elytra flight** in Settings > Controls if looking where you want to go feels too easy. Mouse left/right rolls, mouse up/down pitches, and A/D yaws, so you can bank, loop, fly upside down and do barrel rolls. Banking is how you turn. Flying upside down pushes you toward the ground, as physics and your stomach would expect. There's a roll sensitivity slider right below the toggle.
+
+The setting only changes once you're back on the ground. If you flip it in the air, your current flight stays the way it was until you land.
+
 ## Building from source
 
 You need Windows and Node.js 22 or newer.
