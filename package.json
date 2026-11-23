@@ -1,7 +1,7 @@
 {
   "name": "blockhold-launcher",
   "productName": "Blockhold Launcher",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A voxel-world desktop game launcher: walk around, find your games in chests, launch them.",
   "main": "dist/main/main.js",
   "private": true,
