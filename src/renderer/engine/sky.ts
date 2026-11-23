@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { mulberry32 } from './noise';
 import { worldUniforms } from './world';
+import { ShootingStars } from './shootingStars';
 
 const DAY_SKY = new THREE.Color('#86b6ff');
 const DUSK_SKY = new THREE.Color('#f29a5e');
@@ -16,6 +17,7 @@ export class Sky {
   private sunMesh: THREE.Mesh;
   private moonMesh: THREE.Mesh;
   private stars: THREE.Points;
+  private shootingStars: ShootingStars;
   private clouds: THREE.Mesh;
   private cloudTex: THREE.CanvasTexture;
   private skyGroup = new THREE.Group();
@@ -50,6 +52,7 @@ export class Sky {
     sg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
     this.stars = new THREE.Points(sg, new THREE.PointsMaterial({ color: 0xffffff, size: 1.6, sizeAttenuation: false, fog: false, transparent: true, depthWrite: false }));
     this.skyGroup.add(this.stars);
+    this.shootingStars = new ShootingStars(this.skyGroup);
 
     // blocky cloud layer from a tiny random bitmap scaled up with nearest filtering
     const cc = document.createElement('canvas');
@@ -128,6 +131,7 @@ export class Sky {
     this.moonMesh.lookAt(center);
     (this.stars.material as THREE.PointsMaterial).opacity = 1 - this.daylight;
     this.stars.rotation.y = ang * 0.1;
+    this.shootingStars.update(dt, 1 - this.daylight);
 
     this.clouds.position.x = center.x;
     this.clouds.position.z = center.z;
